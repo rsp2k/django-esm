@@ -169,3 +169,5 @@ package-lock.json
 
 # Django
 tests/staticfiles/
+
+.idea/
