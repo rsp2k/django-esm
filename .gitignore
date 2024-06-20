@@ -164,7 +164,7 @@ _version.py
 
 # npm
 node_modules/
-package-lock.json
+tests/package-lock.json
 
 
 # Django
