@@ -27,7 +27,7 @@ def parse_root_package(package_json):
         if mod[0] in [".", "/"]:
             # local file
             yield from get_static_from_abs_path(
-                module_name, settings.BASE_DIR / mod, settings.BASE_DIR
+                module_name, settings.NPM_BASE_DIR / mod, settings.NPM_BASE_DIR
             )
         else:
             yield module_name, url
@@ -35,7 +35,7 @@ def parse_root_package(package_json):
 
 def parse_dependencies(package_json):
     for dep_name, dep_version in package_json.get("dependencies", {}).items():
-        yield from parse_package_json(settings.BASE_DIR / "node_modules" / dep_name)
+        yield from parse_package_json(settings.NODE_MODULES_PATH / dep_name)
 
 
 def get_static_from_abs_path(mod: str, path: Path, location: Path):
@@ -104,7 +104,7 @@ def parse_package_json(path: Path = None):
         yield from get_static_from_abs_path(
             name,
             path / module,
-            settings.BASE_DIR / "node_modules",
+            settings.NODE_MODULES_PATH,
         )
     except KeyError:
         try:
@@ -112,7 +112,7 @@ def parse_package_json(path: Path = None):
             yield from get_static_from_abs_path(
                 name,
                 path / module,
-                settings.BASE_DIR / "node_modules",
+                settings.NODE_MODULES_PATH,
             )
         except KeyError:
             for module_name, module in exports.items():
@@ -121,7 +121,7 @@ def parse_package_json(path: Path = None):
                 yield from get_static_from_abs_path(
                     str(Path(name) / module_name),
                     path / module,
-                    settings.BASE_DIR / "node_modules",
+                    settings.NODE_MODULES_PATH,
                 )
 
     for dep_name, dep_version in dependencies.items():

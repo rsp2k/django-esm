@@ -5,5 +5,5 @@ root_storage = FileSystemStorage(
     location=settings.BASE_DIR, base_url=settings.STATIC_URL
 )
 node_modules_storage = FileSystemStorage(
-    location=settings.BASE_DIR / "node_modules", base_url=settings.STATIC_URL
+    location=settings.NPM_NODE_MODULES, base_url=settings.STATIC_URL
 )

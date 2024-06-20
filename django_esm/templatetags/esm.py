@@ -14,7 +14,7 @@ register = template.Library()
 @register.simple_tag
 @functools.lru_cache()
 def importmap():
-    with (settings.BASE_DIR / "package.json").open() as f:
+    with (settings.NPM_NODE_PACKAGE_JSON).open() as f:
         package_json = json.load(f)
 
     imports = dict(utils.parse_root_package(package_json)) | dict(

@@ -18,7 +18,7 @@ class ESMFinder(BaseFinder):
         return [*self._check_package_json()]
 
     def _check_package_json(self):
-        if not (settings.BASE_DIR / "package.json").exists():
+        if not (settings.NPM_NODE_PACKAGE_JSON).exists():
             return [
                 Error(
                     "package.json not found",
@@ -35,7 +35,7 @@ class ESMFinder(BaseFinder):
         return []  # this method has a strange return type
 
     def list(self, ignore_patterns):
-        with (settings.BASE_DIR / "package.json").open() as f:
+        with (settings.NPM_NODE_PACKAGE_JSON).open() as f:
             package_json = json.load(f)
         for mod, path in utils.parse_root_package(package_json):
             if not matches_patterns(path, ignore_patterns):

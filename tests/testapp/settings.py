@@ -77,8 +77,13 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+NPM_BASE_DIR = BASE_DIR = Path(__file__).resolve().parent.parent.parent
+NPM_NODE_MODULES = NPM_BASE_DIR / "node_modules"
+NPM_NODE_PACKAGE_JSON = NPM_BASE_DIR / "package.json"
+
 STATICFILES_DIRS = [
-    BASE_DIR / "node_modules",
+    NPM_NODE_MODULES,
 ]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
