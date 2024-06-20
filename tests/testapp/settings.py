@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_esm",
-    "tests.testapp",
+    #"testapp",
 ]
 
 MIDDLEWARE = [
