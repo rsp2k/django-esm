@@ -163,8 +163,9 @@ cython_debug/
 _version.py
 
 # npm
-tests/node_modules/
-tests/package-lock.json
+node_modules/
+package-lock.json
+.package-lock.json
 
 
 # Django
