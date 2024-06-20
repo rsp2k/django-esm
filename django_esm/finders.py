@@ -22,7 +22,7 @@ class ESMFinder(BaseFinder):
             return [
                 Error(
                     "package.json not found",
-                    hint="Run `npm init` to create a package.json file.",
+                    hint=f"Run `npm init` to create a package.json file. Current NPM_NODE_PACKAGE_JSON setting: {settings.NPM_NODE_PACKAGE_JSON}",
                     obj=self,
                     id="django_esm.E001",
                 )
