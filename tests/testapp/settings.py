@@ -42,7 +42,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "tests.testapp.urls"
+ROOT_URLCONF = "testapp.urls"
 
 TEMPLATES = [
     {
@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "tests.testapp.wsgi.application"
+WSGI_APPLICATION = "testapp.wsgi.application"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
