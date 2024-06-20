@@ -163,7 +163,7 @@ cython_debug/
 _version.py
 
 # npm
-node_modules/
+tests/node_modules/
 tests/package-lock.json
 
 
