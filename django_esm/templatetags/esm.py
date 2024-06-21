@@ -15,11 +15,18 @@ register = template.Library()
 @functools.lru_cache()
 def importmap():
     with (settings.NPM_NODE_PACKAGE_JSON).open() as f:
-        package_json = json.load(f)
-
-    imports = dict(utils.parse_root_package(package_json)) | dict(
-        utils.parse_dependencies(package_json)
-    )
+        try:
+            package_json = json.load(f)
+            imports = dict(utils.parse_root_package(package_json)) | dict(
+                utils.parse_dependencies(package_json)
+            )
+        except json.JSONDecodeError:
+            Warning(
+                f"{settings.NPM_NODE_PACKAGE_JSON} is not a valid JSON file!. "
+            )
+            return mark_safe(  # nosec
+                "<!-- from django_esm CHECK LOGS FOR WARNINGS ABOUT package.json -->"
+            )
 
     return mark_safe(  # nosec
         json.dumps(
