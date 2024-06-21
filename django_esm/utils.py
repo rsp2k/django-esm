@@ -104,7 +104,7 @@ def parse_package_json(path: Path = None):
         yield from get_static_from_abs_path(
             name,
             path / module,
-            settings.NODE_MODULES_PATH,
+            settings.NPM_NODE_MODULES_PATH,
         )
     except KeyError:
         try:
@@ -112,7 +112,7 @@ def parse_package_json(path: Path = None):
             yield from get_static_from_abs_path(
                 name,
                 path / module,
-                settings.NODE_MODULES_PATH,
+                settings.NPM_NODE_MODULES_PATH,
             )
         except KeyError:
             for module_name, module in exports.items():
@@ -121,7 +121,7 @@ def parse_package_json(path: Path = None):
                 yield from get_static_from_abs_path(
                     str(Path(name) / module_name),
                     path / module,
-                    settings.NODE_MODULES_PATH,
+                    settings.NPM_NODE_MODULES_PATH,
                 )
 
     for dep_name, dep_version in dependencies.items():
