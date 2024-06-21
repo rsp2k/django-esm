@@ -35,7 +35,7 @@ def parse_root_package(package_json):
 
 def parse_dependencies(package_json):
     for dep_name, dep_version in package_json.get("dependencies", {}).items():
-        yield from parse_package_json(settings.NODE_MODULES_PATH / dep_name)
+        yield from parse_package_json(settings.NPM_NODE_MODULES / dep_name)
 
 
 def get_static_from_abs_path(mod: str, path: Path, location: Path):
